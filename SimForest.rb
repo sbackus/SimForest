@@ -12,15 +12,15 @@ class SimForest < Hasu::Window
   end
 
   def reset
-    
+    @tree = Tree.new(30,30)
   end
 
   def update
-    
+    @tree.update!
   end
 
   def draw
-    
+    @tree.draw(self)
   end
  
   def button_down(button)
