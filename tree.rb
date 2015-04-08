@@ -1,15 +1,15 @@
 class Tree
-
+	MAX_SIZE = 20
 	attr_reader :x, :y, :age
 
 	def initialize(x, y)
 		@x = x
 		@y = y
-		@age = 0.01
+		@age = 1
 	end
 
 	def size 
-		age < 20 ? age : 20
+		age < MAX_SIZE ? age : MAX_SIZE
 	end
 
 	def x1; @x - size/2; end
@@ -30,7 +30,7 @@ class Tree
 		)
 	end
 
-	def update!
-		@age += 0.01
+	def update!(calendar)
+		@age += calendar.speed
 	end
 end
