@@ -4,6 +4,7 @@ require 'Hasu'
 Hasu.load 'tree.rb'
 Hasu.load 'calendar.rb'
 Hasu.load 'menu.rb'
+Hasu.load 'cursor.rb'
 
 class SimForest < Hasu::Window
   WIDTH = 640
@@ -17,6 +18,7 @@ class SimForest < Hasu::Window
     @calendar = Calendar.new
     @tree = Tree.new(30,30)
     @menu = Menu.new(self)
+    @cursor = Cursor.new
   end
 
   def update
@@ -26,6 +28,7 @@ class SimForest < Hasu::Window
   def draw
     @tree.draw(self)
     @menu.draw(self)
+    @cursor.draw(self)
   end
  
   def button_down(button)
