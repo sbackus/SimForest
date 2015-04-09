@@ -16,17 +16,17 @@ class SimForest < Hasu::Window
 
   def reset
     @calendar = Calendar.new
-    @tree = Tree.new(30,30)
+    @trees = []
     @menu = Menu.new(self)
     @cursor = Cursor.new
   end
 
   def update
-    @tree.update!(@calendar)
+    @trees.each {|tree| tree.update!(@calendar)}
   end
 
   def draw
-    @tree.draw(self)
+    @trees.each {|tree| tree.draw(self)}
     @menu.draw(self)
     @cursor.draw(self)
   end
@@ -35,7 +35,10 @@ class SimForest < Hasu::Window
     case button
     when Gosu::KbEscape
       close
+    when Gosu::MsLeft
+      @trees << Tree.new(mouse_x, mouse_y)
     end
+
   end
 
   def button_up(button)
