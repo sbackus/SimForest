@@ -6,6 +6,7 @@ Hasu.load 'calendar.rb'
 Hasu.load 'menu.rb'
 Hasu.load 'cursor.rb'
 Hasu.load 'maple.rb'
+Hasu.load 'menu_item.rb'
 
 class SimForest < Hasu::Window
   WIDTH = 640
@@ -19,17 +20,20 @@ class SimForest < Hasu::Window
     @calendar = Calendar.new
     @trees = []
     @menu = Menu.new(self)
+    @menu.add_item("Menu Item 1", 0, 0, 1, lambda { self.close })
+    @menu.add_item("Menu Item 2", 0, 23, 1, lambda { self.close })
     @cursor = Cursor.new
   end
 
   def update
     @trees.each {|tree| tree.update!(@calendar)}
     @calendar.update!
+    @menu.update
   end
 
   def draw
     @trees.each {|tree| tree.draw(self)}
-    @menu.draw(self,@calendar)
+    @menu.draw
     @cursor.draw(self)
   end
  
@@ -38,6 +42,7 @@ class SimForest < Hasu::Window
     when Gosu::KbEscape
       close
     when Gosu::MsLeft
+      @menu.clicked
       @trees << Maple.new(mouse_x, mouse_y)
     end
 

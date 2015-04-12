@@ -1,14 +1,31 @@
+# http://blog.dreasgrech.com/2010/08/simple-menu-for-gosu-game-in-ruby.html
 class Menu
-	WIDTH = 100
-	HEIGHT = 50
+    def initialize (window)
+        @window = window
+        @items = Array.new
+    end
 
-	def initialize(window)
-		@font = Gosu::Font.new(window, "Ariel", 30)
-	end
+    def add_item (text, x, y, z, callback = nil)
+        item = MenuItem.new(@window, text, x, y, z, callback)
+        @items << item
+        self
+    end
 
-	def draw(window,calendar)
-		@font.draw(calendar.day, 0, 60, 0)
-		@font.draw(calendar.season, 0, 30, 0)
-		@font.draw(calendar.year, 0, 0, 0)
-	end
+    def draw
+        @items.each do |i|
+            i.draw
+        end
+    end
+
+    def update
+        @items.each do |i|
+            i.update
+        end
+    end
+
+    def clicked
+        @items.each do |i|
+            i.clicked
+        end
+    end
 end
