@@ -17,6 +17,14 @@ class Calendar
 		@speed = speed
 	end
 
+	def increase_speed!
+		@speed += @speed/2
+	end
+
+	def decrease_speed!
+		@speed -= @speed/2
+	end
+
 	def update!
 		@day_count += @speed
 	end

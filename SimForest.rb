@@ -20,8 +20,9 @@ class SimForest < Hasu::Window
     @calendar = Calendar.new
     @trees = []
     @menu = Menu.new(self)
-    @menu.add_item("Menu Item 1", 0, 0, 1, lambda { self.close })
-    @menu.add_item("Menu Item 2", 0, 23, 1, lambda { self.close })
+    @menu.add_item("Speed up time", 0, 0, 1, lambda { @calendar.increase_speed! })
+    @menu.add_item("Slow down time", 0, 23, 1, lambda { @calendar.decrease_speed! })
+
     @cursor = Cursor.new
   end
 
