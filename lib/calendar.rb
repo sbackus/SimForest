@@ -8,8 +8,8 @@ class Calendar
 
 	attr_reader :speed, :season
 
-	def initialize
-		@speed = 0.25
+	def initialize(speed = 0.25)
+		@speed = speed
 		@day_count = 0.0
 	end
 

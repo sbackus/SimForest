@@ -1,5 +1,6 @@
 #maple trees change color in the fall
-require './calendar.rb'
+require_relative './calendar.rb'
+require_relative './tree.rb'
 
 class Maple < Tree
 

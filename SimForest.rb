@@ -1,12 +1,14 @@
 require 'rubygems'
 require 'Hasu'
 
-Hasu.load 'tree.rb'
-Hasu.load 'calendar.rb'
-Hasu.load 'menu.rb'
-Hasu.load 'cursor.rb'
-Hasu.load 'maple.rb'
-Hasu.load 'menu_item.rb'
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| Hasu.load file }
+
+# Hasu.load 'tree.rb'
+# Hasu.load 'calendar.rb'
+# Hasu.load 'menu.rb'
+# Hasu.load 'cursor.rb'
+# Hasu.load 'maple.rb'
+# Hasu.load 'menu_item.rb'
 
 class SimForest < Hasu::Window
   WIDTH = 640
