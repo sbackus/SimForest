@@ -6,7 +6,7 @@ class Calendar
 	FALL   = 2
 	WINTER = 3
 
-	attr_reader :speed, :season
+	attr_reader :speed, :season, :speed
 
 	def initialize(speed = 0.25)
 		@speed = speed
@@ -34,11 +34,7 @@ class Calendar
 	end
 
 	def season_count
-		(@day_count/90).round
-	end
-
-	def year
-		(day/360).round
+		(@day_count/90.0).floor
 	end
 
 	def season
