@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'Hasu'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| Hasu.load file }
