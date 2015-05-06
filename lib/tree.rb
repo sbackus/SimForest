@@ -8,7 +8,7 @@ class Tree
 		@x = x
 		@y = y
 		@age = GROWTH_RATE * 2.0
-		@color = Gosu::Color::GREEN
+		@color = Gosu::Color::GREEN.dup
 	end
 
 	def size 

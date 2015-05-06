@@ -20,9 +20,12 @@ class SimForest < Hasu::Window
   def reset
     @calendar = Calendar.new
     @trees = []
+    @planting = "Pine"
     @menu = Menu.new(self)
     @menu.add_item("Speed up time", 0, 0, 1, lambda { @calendar.increase_speed! })
     @menu.add_item("Slow down time", 0, 23, 1, lambda { @calendar.decrease_speed! })
+    @menu.add_item("Plant Maples", 0, 46, 1, lambda { @planting = "Maple" })
+    @menu.add_item("Plant Pines", 0, 69, 1, lambda { @planting = "Pine" })
 
     @cursor = Cursor.new
   end
@@ -47,7 +50,11 @@ class SimForest < Hasu::Window
       if mouse_x < 150 && mouse_y < 100
         @menu.clicked
       else
-        @trees << Maple.new(mouse_x, mouse_y)
+        if @planting == "Maple"
+          @trees << Maple.new(mouse_x, mouse_y)
+        else
+          @trees << Tree.new(mouse_x, mouse_y)
+        end
       end
     end
 

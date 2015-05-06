@@ -1,5 +1,5 @@
 class MenuItem
-    HOVER_OFFSET = 3
+    HOVER_OFFSET = 0
     def initialize (window, text, x, y, z, callback)
         @window = window
         @text = text
