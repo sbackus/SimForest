@@ -44,8 +44,11 @@ class SimForest < Hasu::Window
     when Gosu::KbEscape
       close
     when Gosu::MsLeft
-      @menu.clicked
-      @trees << Maple.new(mouse_x, mouse_y)
+      if mouse_x < 150 && mouse_y < 100
+        @menu.clicked
+      else
+        @trees << Maple.new(mouse_x, mouse_y)
+      end
     end
 
   end
